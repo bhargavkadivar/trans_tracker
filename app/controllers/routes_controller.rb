@@ -4,6 +4,10 @@ class RoutesController < ApplicationController
         @routes = Route.all 
 	end
 
+	def show
+		@route = Route.find(params[:id])
+	end
+
 	def new
 		@route = Route.new
 	end
@@ -37,11 +41,7 @@ class RoutesController < ApplicationController
         redirect_to routes_path, notice: "Successfully delete Route"
 	end
 
-	def show
-		@route = Route.find(params[:id])
-	end
-
-
+	
 	private
 	def	route_params
         params[:route].permit(:name, :latitude,:longitude, :possition)  
